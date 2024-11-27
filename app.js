@@ -1,16 +1,16 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const weatherRoutes = require('./routes/weather');
 
 dotenv.config();
 const app = express();
 
-// Middleware
-app.use(express.static('public'));
-app.use('/api/weather', weatherRoutes);
+const PORT = process.env.PORT || 3000; // Use the platform-assigned port, or default to 3000
+const HOST = '0.0.0.0'; // Bind to all network interfaces (required for hosting platforms)
 
-// Server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+app.get('/', (req, res) => {
+    res.send('Weather app is running!');
+});
+
+app.listen(PORT, HOST, () => {
+    console.log(`Server running on http://${HOST}:${PORT}`);
 });
