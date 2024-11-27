@@ -1,18 +1,23 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const path = require('path');
+const weatherRoutes = require('./routes/weather');
 
 dotenv.config();
 const app = express();
 
-const PORT = process.env.PORT || 3000; // Use the platform-assigned port, or default to 3000
-const HOST = '0.0.0.0'; // Bind to all network interfaces (required for hosting platforms)
+const PORT = process.env.PORT || 3000;
+const HOST = '0.0.0.0';
 
-const path = require('path');
+// Serve static files
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(express.static(path.join(__dirname, 'public'))); // Serve static files
+// Use the weather route
+app.use('/weather', weatherRoutes);
 
+// Home route (optional for serving your index.html)
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html')); // Serve your front-end HTML
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(PORT, HOST, () => {
