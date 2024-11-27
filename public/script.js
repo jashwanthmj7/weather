@@ -1,21 +1,22 @@
 document.getElementById('getWeather').addEventListener('click', async () => {
-  const city = document.getElementById('city').value;
-  if (!city) {
-    alert('Please enter a city name!');
-    return;
-  }
+    const city = document.getElementById('city').value;
+    if (!city) return alert('Please enter a city name.');
 
-  const response = await fetch(`/api/weather/${city}`);
-  const data = await response.json();
+    try {
+        // Correct fetch URL
+        const response = await fetch(`/weather?city=${city}`);
+        const data = await response.json();
 
-  if (data.error) {
-    alert(data.error);
-    return;
-  }
-
-  document.getElementById('weatherInfo').innerHTML = `
-    <h2>${data.name}</h2>
-    <p>Temperature: ${data.main.temp}°C</p>
-    <p>Weather: ${data.weather[0].description}</p>
-  `;
+        if (data.error) {
+            document.getElementById('weatherResult').innerText = `Error: ${data.error}`;
+        } else {
+            document.getElementById('weatherResult').innerHTML = `
+                <h3>Weather in ${data.city}</h3>
+                <p>Temperature: ${data.temperature}°C</p>
+                <p>Description: ${data.description}</p>
+            `;
+        }
+    } catch (error) {
+        document.getElementById('weatherResult').innerText = 'An error occurred. Please try again.';
+    }
 });
