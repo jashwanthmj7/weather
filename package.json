@@ -4,7 +4,7 @@
   "description": "A simple weather app that fetches real-time weather data using OpenWeather API.",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",  // Add this line to define the start script
+    "start": "node app.js",  
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": ["weather", "Node.js", "Express", "API"],
