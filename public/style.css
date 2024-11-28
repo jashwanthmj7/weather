@@ -1,92 +1,114 @@
+/* General Body Styling */
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(135deg, #f3f4f6, #dfe4ea);
+  background: linear-gradient(135deg, #00bcd4, #8e24aa); /* Gradient background */
+  color: white;
 }
 
+/* Container Styling */
 .container {
   text-align: center;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.8); /* Slight transparency for the container */
   padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 400px;
-  transition: transform 0.3s ease-in-out;
 }
 
-.container:hover {
-  transform: translateY(-5px); /* Slight hover effect to lift the container */
-}
-
+/* Title Styling */
 h1 {
   font-size: 2.5rem;
-  color: #4a90e2;
   margin-bottom: 20px;
-}
-
-input {
-  width: 80%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-  outline: none;
-  transition: all 0.3s ease;
-}
-
-input:focus {
-  border-color: #4a90e2;
-  box-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
-}
-
-button {
-  padding: 12px 20px;
-  background-color: #4a90e2;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #357ab7; /* Darker blue on hover */
-}
-
-button:active {
-  transform: scale(0.98); /* Slight press effect on button click */
-}
-
-#weatherInfo {
-  margin-top: 20px;
-  padding: 15px;
-  background: #f4f4f9;
-  border-radius: 8px;
-  display: none; /* Initially hidden */
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-
-#weatherInfo.show {
-  display: block;
-  opacity: 1;
-}
-
-#weatherInfo h3 {
-  color: #4a90e2;
-  margin-bottom: 10px;
-}
-
-#weatherInfo p {
-  font-size: 1.1rem;
   color: #333;
 }
+
+/* Input field Styling */
+#city {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 2px solid #008CBA;
+  margin-right: 10px;
+  outline: none;
+  width: 200px;
+  transition: border-color 0.3s ease;
+}
+
+/* Focus effect on Input */
+#city:focus {
+  border-color: #005f73;
+}
+
+/* Button Styling */
+#getWeather {
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s ease;
+  margin-top: 10px;
+}
+
+/* Hover effect on button */
+#getWeather:hover {
+  background-color: #005f73;
+  transform: scale(1.05); /* Button grows slightly */
+}
+
+/* Weather info container (card-like design) */
+#weatherInfo {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards; /* Fade-in effect */
+}
+
+/* Fade-in effect for weather info */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive Design for smaller screens */
+@media (max-width: 600px) {
+  .container {
+    width: 90%; /* Make the container full width on smaller screens */
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  #city {
+    width: 150px; /* Adjust the width of the input on mobile */
+  }
+
+  #getWeather {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}
+
 
